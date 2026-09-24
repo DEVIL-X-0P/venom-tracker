@@ -244,7 +244,8 @@
     for (const w of data.workers) if (!mergedWorkers.has(w.id)) { mergedWorkers.set(w.id, w); await cloudUpsert("workers", w, "id"); }
     const mergedEntries = new Map(remoteEntries.map((e) => [`${e.worker_id}:${e.work_date}`, e]));
     for (const e of data.entries) {
-      if (!mergedWorkerIds.has(e.worker_id) && !mergedWorkers.has(e.worker_id)) continue;
+     // if (!mergedWorkerIds.has(e.worker_id) continue;
+      if (!mergedWorkers.has(e.worker_id)) continue;
       const key = `${e.worker_id}:${e.work_date}`;
       if (!mergedEntries.has(key)) { mergedEntries.set(key, e); await cloudUpsert("attendance", e, "user_id,worker_id,work_date"); }
     }
