@@ -1,0 +1,65 @@
+:root {
+  --ink: #35291f;
+  --muted: #8b7c6d;
+  --line: #e8dfd3;
+  --paper: #fffdf9;
+  --canvas: #f5f0e7;
+  --green: #34533f;
+  --green-2: #e8eee6;
+  --accent: #c58a56;
+  --shadow: 0 12px 40px #54391c12;
+}
+
+body { background: radial-gradient(ellipse at 8% 0%, #eadcc8 0, transparent 34rem), var(--canvas); }
+.topbar { border-bottom-color: #e4d8c8; }
+.brand { gap: 11px; letter-spacing: 0; }
+.brand-mark { width: 39px; height: 39px; border-radius: 12px; background: linear-gradient(145deg, #795436, #4b3528); color: #fbf2e5; box-shadow: inset 0 0 0 1px #ffffff1c, 0 3px 8px #59402b24; font: 800 20px Manrope, sans-serif; }
+.brand-copy { display: flex; flex-direction: column; gap: 1px; }
+.brand-copy strong { font: 800 21px Manrope, sans-serif; letter-spacing: -.8px; line-height: 1; }
+.brand-copy small { color: #8b7967; font: 700 7px 'DM Sans', sans-serif; letter-spacing: 1.25px; }
+.brand-dot { color: #b57946; }
+.eyebrow { color: #a17a56; }
+.intro h1, .profile-heading h1 { color: #35291f; }
+.intro-copy { color: #827361; }
+.primary-button { background: #34533f; box-shadow: 0 4px 12px #34533f25; }
+.primary-button:hover { background: #284532; }
+.summary-card, .panel { background: var(--paper); border-color: #e8dfd3; }
+.summary-card { box-shadow: 0 3px 13px #54391c08; }
+.summary-icon.green { background: #e9eee5; color: #456849; }
+.summary-icon.peach { background: #f6eadb; color: #a76a38; }
+.summary-icon.lavender { background: #efe9df; color: #896748; }
+.summary-value { color: #47372a; }
+.summary-label { color: #93816d; }
+.summary-foot { color: #a49482; }
+.directory-row:hover, .icon-button:hover { background: #f8f3eb; }
+.directory-due strong, .payment-amount, .text-button { color: #47684b; }
+.calendar-cell { background: #fcfaf6; }
+.calendar-cell.has-entry { background: #f2f4ed; }
+.calendar-cell.selected { border-color: #78906f; background: #edf1e8; }
+.calendar-cell:hover { border-color: #c8b69f; background: #f5efe5; }
+.calendar-cell.today .cell-date { background: #765237; }
+.cell-work { color: #496749; }
+.weekday, .calendar-legend, .cell-pay { color: #938574; }
+.day-totals, .pay-preview, .account-status { background: #f8f4ed; border-color: #eae0d3; }
+.worker-row, .payment-row { background: transparent; border-color: #eee6dc; }
+.worker-row:hover .row-chevron { color: #755336; }
+.avatar { background: #efe7da; color: #755336; }
+.muted-avatar { background: #f3eee6; color: #978570; }
+.mark-button { border-color: #e6dccf; color: #6b815f; }
+.work-option { background: #fcfaf6; border-color: #e8dfd3; }
+.work-option.active { border-color: #78906f; background: #edf1e8; }
+.work-option.active strong, .pay-preview strong { color: #47684b; }
+.input { border-color: #e5dacb; background: #fffdf9; }
+.input:focus { border-color: #9b8061; box-shadow: 0 0 0 3px #9b80611c; }
+.secondary-button { background: #f7f2ea; border-color: #e8dfd3; color: #695947; }
+.secondary-button:hover { background: #eee5d8; }
+.modal { background: #fffdf9; border-color: #e5dacb; }
+.modal::backdrop { background: #30241970; }
+.footer { color: #998873; }
+.toast { background: #3b3025; }
+
+@media (max-width: 560px) {
+  .brand-mark { width: 35px; height: 35px; }
+  .brand-copy strong { font-size: 19px; }
+  .brand-copy small { font-size: 6px; letter-spacing: 1px; }
+}

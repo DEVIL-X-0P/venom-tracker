@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#f5f0e7">
+  <meta name="description" content="Tracko by Shree Furniture House — a crafted workspace for attendance, work and wages.">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="theme.css">
+  <title>Tracko — Shree Furniture House</title>
+</head>
+<body>
+  <main class="shell">
+    <header class="topbar">
+      <a class="brand" href="#" aria-label="Tracko by Shree Furniture House"><span class="brand-mark">T</span><span class="brand-copy"><strong>Tracko<span class="brand-dot">.</span></strong><small>BY SHREE FURNITURE HOUSE</small></span></a>
+      <div class="top-actions"><span id="modePill" class="mode-pill"><i></i><span>On this device</span></span><button class="icon-button" id="accountButton" aria-label="Account and sync" title="Account and sync"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="3.5"/><path d="M5 20c.6-3.6 3-5.5 7-5.5s6.4 1.9 7 5.5"/></svg></button></div>
+    </header>
+
+    <section id="dashboardView">
+      <section class="intro"><div><p class="eyebrow">SHREE FURNITURE HOUSE · WORKSHOP LEDGER</p><h1>Crafted work.<br class="mobile-break"> Clearly tracked.</h1><p class="intro-copy">A considered view of your workshop team, daily craft and wages.</p></div><button class="primary-button add-worker-top" id="addWorkerTop"><span>＋</span> Add a worker</button></section>
+      <section class="summary-grid dashboard-summary" aria-label="Crew summary">
+        <article class="summary-card"><div class="summary-label"><span class="summary-icon green">♧</span> TOTAL LABOURS</div><div class="summary-value" id="summaryWorkers">0</div><div class="summary-foot">Workers in your crew</div></article>
+        <article class="summary-card"><div class="summary-label"><span class="summary-icon peach">◉</span> WORK THIS MONTH</div><div class="summary-value"><span id="summaryWork">0</span> <small>times</small></div><div class="summary-foot" id="summaryWorkFoot">Across all workers</div></article>
+        <article class="summary-card"><div class="summary-label"><span class="summary-icon lavender">₹</span> TOTAL DUE</div><div class="summary-value" id="summaryDue">₹0</div><div class="summary-foot">After recorded payments</div></article>
+      </section>
+      <section class="worker-directory panel"><div class="directory-heading"><div><p class="eyebrow">YOUR CREW</p><h2>Labour list</h2></div><span class="directory-count" id="directoryCount">0 workers</span></div><div class="directory-columns"><span>NAME</span><span>WORK THIS MONTH</span><span>DUE AMOUNT</span></div><div id="dashboardWorkers"></div></section>
+      <footer class="footer"><span>Tracko by Shree Furniture House · Made for the craft behind every piece.</span><button class="text-button" id="manageWorkersButton">Manage workers <span>→</span></button></footer>
+    </section>
+
+    <section id="workerProfileView" class="hidden">
+      <div class="profile-top"><button class="back-button" id="backToDashboard">‹ <span>All labours</span></button><button class="text-button" id="editProfileWorker">Edit worker</button></div>
+      <section class="profile-heading"><div><p class="eyebrow">LABOUR PROFILE</p><h1 id="profileWorkerName">Worker</h1><p class="intro-copy" id="profileWorkerRate"></p></div><button class="primary-button" id="recordPaymentButton">＋ Record payment</button></section>
+      <section class="summary-grid profile-summary" aria-label="Worker totals"><article class="summary-card"><div class="summary-label"><span class="summary-icon lavender">₹</span> DUE AMOUNT</div><div class="summary-value" id="profileDue">₹0</div><div class="summary-foot">Earnings less payments</div></article><article class="summary-card"><div class="summary-label"><span class="summary-icon peach">◉</span> WORK COMPLETED</div><div class="summary-value"><span id="profileWork">0</span> <small>times</small></div><div class="summary-foot">Total recorded work</div></article><article class="summary-card"><div class="summary-label"><span class="summary-icon green">₹</span> PAID SO FAR</div><div class="summary-value" id="profilePaid">₹0</div><div class="summary-foot">Total payments recorded</div></article></section>
+      <section class="profile-layout"><article class="calendar-panel panel"><div class="calendar-heading"><div><p class="eyebrow">ATTENDANCE</p><h2 id="profileMonthTitle">Month</h2></div><div class="calendar-actions"><button class="icon-button calendar-arrow" id="profilePrevMonth" aria-label="Previous month">‹</button><button class="icon-button calendar-arrow" id="profileNextMonth" aria-label="Next month">›</button></div></div><div class="calendar-grid" id="profileCalendarGrid" role="grid" aria-label="Worker attendance calendar"></div><div class="calendar-legend"><span><i class="legend-dot green-dot"></i> Work recorded</span><span>Choose a date to add or edit attendance</span></div><div id="profileDayRecords" class="profile-day-records"></div></article><aside class="payments-panel panel"><div class="payments-heading"><div><p class="eyebrow">PAYMENT HISTORY</p><h2>Payments</h2></div><span class="payment-count" id="paymentCount">0</span></div><div id="paymentHistory"></div></aside></section>
+    </section>
+  </main>
+
+  <dialog id="workerDialog" class="modal"><form id="workerForm" method="dialog"><div class="modal-top"><div><p class="eyebrow">YOUR CREW</p><h2 id="workerDialogTitle">Add a worker</h2></div><button type="button" class="icon-button close-button" data-close="workerDialog" aria-label="Close">×</button></div><label class="field-label" for="workerName">Worker name</label><input class="input" id="workerName" name="name" placeholder="e.g. Ramesh Kumar" required maxlength="80"><label class="field-label" for="workerWage">Usual daily wage</label><div class="money-input"><span id="currencySymbol">₹</span><input class="input" id="workerWage" name="wage" type="number" min="0" step="0.01" placeholder="800" required inputmode="decimal"></div><p class="field-hint">You can change the wage for any individual day.</p><div class="modal-actions"><button type="button" class="secondary-button" data-close="workerDialog">Cancel</button><button class="primary-button" type="submit">Save worker</button></div><input type="hidden" id="workerId"></form></dialog>
+
+  <dialog id="entryDialog" class="modal"><form id="entryForm" method="dialog"><div class="modal-top"><div><p class="eyebrow">DAILY ATTENDANCE</p><h2 id="entryDialogTitle">Record work</h2></div><button type="button" class="icon-button close-button" data-close="entryDialog" aria-label="Close">×</button></div><input type="hidden" id="entryWorkerId"><input type="hidden" id="entryDate"><label class="field-label" for="workAmount">Work completed</label><div class="work-options" id="workOptions"></div><label class="field-label" for="entryWage">Daily wage</label><div class="money-input"><span id="entryCurrencySymbol">₹</span><input class="input" id="entryWage" type="number" min="0" step="0.01" required inputmode="decimal"></div><p class="pay-preview">Estimated pay <strong id="payPreview">₹0</strong></p><label class="field-label" for="entryNote">What did they work on?</label><textarea class="input note-input" id="entryNote" maxlength="500" placeholder="Describe the work completed today…"></textarea><div class="modal-actions"><button type="button" class="danger-button" id="deleteEntryButton">Remove entry</button><span class="action-spacer"></span><button type="button" class="secondary-button" data-close="entryDialog">Cancel</button><button class="primary-button" type="submit">Save record</button></div></form></dialog>
+
+  <dialog id="paymentDialog" class="modal"><form id="paymentForm" method="dialog"><div class="modal-top"><div><p class="eyebrow">PAYMENT</p><h2 id="paymentDialogTitle">Record a payment</h2></div><button type="button" class="icon-button close-button" data-close="paymentDialog" aria-label="Close">×</button></div><input type="hidden" id="paymentWorkerId"><input type="hidden" id="paymentId"><label class="field-label" for="paymentAmount">Amount paid</label><div class="money-input"><span id="paymentCurrencySymbol">₹</span><input class="input" id="paymentAmount" type="number" min="0.01" step="0.01" required inputmode="decimal" placeholder="500"></div><label class="field-label" for="paymentDate">Payment date</label><input class="input" id="paymentDate" type="date" required><label class="field-label" for="paymentNote">Note (optional)</label><input class="input" id="paymentNote" maxlength="200" placeholder="Cash, bank transfer…"><div class="modal-actions"><button type="button" class="secondary-button" data-close="paymentDialog">Cancel</button><span class="action-spacer"></span><button class="primary-button" id="savePaymentButton" type="submit">Save payment</button></div></form></dialog>
+
+  <dialog id="workersDialog" class="modal workers-modal"><div class="modal-top"><div><p class="eyebrow">YOUR CREW</p><h2>Manage workers</h2></div><button type="button" class="icon-button close-button" data-close="workersDialog" aria-label="Close">×</button></div><div id="workersList" class="workers-list"></div><button class="secondary-button full-button" id="addWorkerInList">＋ Add another worker</button></dialog>
+
+  <dialog id="accountDialog" class="modal"><div class="modal-top"><div><p class="eyebrow">BACKUP & SYNC</p><h2>Keep your records safe</h2></div><button type="button" class="icon-button close-button" data-close="accountDialog" aria-label="Close">×</button></div><p class="account-copy">Your records are currently saved on this device. Connect a Supabase project to sign in and sync your crew across devices.</p><div id="accountStatus" class="account-status"></div><form id="authForm"><label class="field-label" for="authEmail">Email</label><input id="authEmail" class="input" type="email" autocomplete="email" required placeholder="you@example.com"><label class="field-label" for="authPassword">Password</label><input id="authPassword" class="input" type="password" autocomplete="current-password" minlength="6" required placeholder="At least 6 characters"><div class="modal-actions auth-actions"><button class="secondary-button" id="signupButton" type="button">Create account</button><button class="primary-button" type="submit">Sign in & sync</button></div></form><button class="text-button signout-button hidden" id="signoutButton">Sign out of cloud account</button></dialog>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script src="config.js"></script>
+  <script src="app.js" defer></script>
+</body>
+</html>
