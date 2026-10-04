@@ -1,10 +1,1 @@
-{
-  "name": "Tracko — Shree Furniture House",
-  "short_name": "Tracko",
-  "description": "Attendance, work notes and wage tracking for Shree Furniture House.",
-  "start_url": "./",
-  "display": "standalone",
-  "background_color": "#f5f0e7",
-  "theme_color": "#f5f0e7",
-  "icons": [{"src":"icon.svg","sizes":"any","type":"image/svg+xml","purpose":"any maskable"}]
-}
+{"name":"Tracko — Shree Furniture House","short_name":"Tracko","description":"Workshop attendance, wage, sales and expense tracker.","start_url":"./","display":"standalone","background_color":"#f4eee5","theme_color":"#24150f","icons":[{"src":"tracko-logo-v2.png","sizes":"any","type":"image/png","purpose":"any"}]}
