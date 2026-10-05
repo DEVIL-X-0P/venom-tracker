@@ -45,6 +45,52 @@ Open `http://localhost:8000`. Records are saved in this browser. The app reuses 
 
 Row-level security scopes cloud records to the signed-in manager. Admin profile details are synced with the manager account. Local records stay available in the browser on this device.
 
+## Forgot password
+
+If the manager cannot remember the password:
+
+1. Open the cloud icon in the top bar and choose **Forgot password?**
+2. Enter the account email and choose **Send reset link**. Supabase emails a reset link to that address. Tracko reports success without revealing whether the address exists.
+3. Open the emailed link. Tracko detects the link, clears it from the address bar and opens **Set new password**.
+4. Enter the new password twice. Tracko saves it, signs the manager in and pulls the cloud records.
+
+If the link has expired, or the account email no longer exists, ask the owner to create a fresh account or use Supabase Authentication to set the password.
+
+## Host on Vercel
+
+The folder is plain static files, so deploy it as-is:
+
+```bash
+npx vercel deploy --prod
+```
+
+Or import the folder at [vercel.com/new](https://vercel.com/new). Vercel serves `index.html` with no build step. No `vercel.json` is required.
+
+### Required Supabase settings for the reset email
+
+The password reset email links back to this app, so Supabase must be told the app's address. In **Supabase → Authentication → URL Configuration**:
+
+- **Site URL**: set it to the production address, for example `https://labour-tracker.vercel.app`.
+- **Redirect URLs**: add the same address. Also add any preview deployment addresses you want to test, such as `https://labour-tracker-*.vercel.app`.
+
+Tracko sends `redirect_to` built from the address the browser is currently on (`location.origin + location.pathname`), so the same build works on a preview URL as long as that URL is allowed. If the app is served from a sub-path, or a redirect is needed to a different host, set it explicitly in `config.js`:
+
+```js
+window.TRACKO_CONFIG = {
+  supabaseUrl: "https://YOUR_PROJECT.supabase.co",
+  supabaseAnonKey: "YOUR_PUBLIC_ANON_KEY",
+  resetRedirectUrl: "https://YOUR_PROJECT.supabase.co/auth/v1/verify", // optional override
+  currency: "INR",
+  locale: "en-IN"
+};
+```
+
+If a reset email opens the wrong page, the address is missing from Redirect URLs. Tracko shows the exact address it expects in the Forgot password dialog.
+
+### Deliverable email
+
+Supabase's built-in test email is rate limited and only reaches project members. Before real owners use **Forgot password?**, connect a custom SMTP provider under **Supabase → Project Settings → Email** (any transactional provider works). Also confirm **Authentication → Email** has **Confirm email** enabled, so reset addresses always match a confirmed account.
+
 ## Install on Android
 
 Host the folder at an HTTPS address, open it in Chrome on Android, then use the browser menu and select **Install app** or **Add to Home screen**.

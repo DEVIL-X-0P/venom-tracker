@@ -102,6 +102,9 @@ dialog select{border:1px solid var(--line);border-radius:3px;padding:10px;backgr
   .wide-dialog form { max-height: calc(100dvh - 48px); padding-right: 2px; }
   .invoice-edit-row { grid-template-columns: minmax(0, 1fr) 48px 66px; gap: 5px; }
   .invoice-edit-row .text-link { grid-column: 1 / -1; justify-self: end; }
+.auth-links { display: flex; justify-content: flex-end; margin-top: -4px; }
+.auth-links button { border: 0; background: transparent; padding: 4px 0; color: #7a5b3b; font-size: 9px; font-weight: 700; text-decoration: underline; cursor: pointer; }
+.auth-links button:hover { color: #53351f; }
   .dialog-actions { flex-wrap: wrap; }
   .dialog-actions .spacer { display: none; }
   .dialog-actions .button { min-width: 96px; }
@@ -154,11 +157,3 @@ dialog select{border:1px solid var(--line);border-radius:3px;padding:10px;backgr
   .worker-work, .worker-due { padding-left: 0; }
   dialog:not(.print-preview-dialog) { max-height: calc(100dvh - 20px); overflow-y: auto; overscroll-behavior: contain; }
 }
-.order-filters{display:grid;grid-template-columns:minmax(210px,1fr) 165px auto;align-items:center;gap:7px;min-width:0}
-.order-filters input,.order-filters select{width:100%;min-width:0;max-width:100%;border:1px solid var(--line);border-radius:3px;background:#fffdf8;padding:9px;color:var(--ink);font-size:10px}
-.order-filters input[type=search]{min-width:210px}
-.order-payment-row{flex-wrap:wrap}
-.order-payment-row>span{min-width:0}
-.order-payment-row .text-link{white-space:nowrap}
-@media(max-width:760px){.order-filters{width:100%;grid-template-columns:minmax(0,1fr) auto}.order-filters input[type=search]{grid-column:1/-1;min-width:0}.order-filters input[type=date]{grid-column:1}.order-filters select{grid-column:2}.order-payment-row{display:grid;grid-template-columns:minmax(0,1fr) auto auto auto;gap:6px}.order-payment-row>span{grid-column:1/-1}.order-payment-row>b{grid-column:1}.order-payment-row .text-link{padding:5px 2px}}
-@media(max-width:420px){.order-filters{grid-template-columns:minmax(0,1fr) minmax(100px,.8fr);gap:6px}.order-filters input[type=date]{grid-column:1}.order-filters select{grid-column:2}.order-payment-row{grid-template-columns:minmax(0,1fr) auto auto}.order-payment-row>b{grid-column:1}.order-payment-row [data-receipt]{grid-column:3}}
